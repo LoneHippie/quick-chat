@@ -1,4 +1,5 @@
 @import "variables";
+@import "mediaqueries";
 
 *, 
 *::after, 
@@ -9,7 +10,19 @@
 } 
 
 html {
-    font-size: 62.5%;
+    font-size: 42%;
+    @include respond(landscapePhone) {
+        font-size: 50%;
+    }
+    @include respond(tablet) {
+        font-size: 54%;
+    }
+    @include respond(laptop) {
+        font-size: 58%;
+    }
+    @include respond(desktop) {
+        font-size: 62.5%;
+    }
 }
 
 body {

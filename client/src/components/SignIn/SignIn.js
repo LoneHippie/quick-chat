@@ -1,34 +1,8 @@
-import React, { useEffect, useState, useContext } from 'react';
-import { SocketContext } from '../../context/socket';
+import React from 'react';
 
 import styles from './SignIn.module.scss';
 
-const SignIn = () => {
-
-    const socket = useContext(SocketContext);
-
-    const [ username, setUsername ] = useState('');
-    const [ room, setRoom ] = useState('general');
-
-    useEffect(() => {
-        socket.on('message', data => {
-            console.log(data);
-        })
-
-        console.log(socket)
-
-        return () => socket.close();
-    }, [])
-
-    const handlers = {
-        handleChangeName: (e) => {
-            setUsername(e.target.value);
-        },
-        handleChangeRoom: (e) => {
-            setRoom(e.target.value);
-            console.log(room)
-        }
-    }
+const SignIn = ({ username, handleChangeName, handleChangeRoom, handleInitUser }) => {
 
     return (
         <div className={styles.body}>
@@ -43,7 +17,7 @@ const SignIn = () => {
                     title='username'
                     placeholder='Your username'
                     value={username}
-                    onChange={(e) => handlers.handleChangeName(e)}
+                    onChange={(e) => handleChangeName(e)}
                 />
             </div>
 
@@ -53,7 +27,7 @@ const SignIn = () => {
                     name="rooms" 
                     id="rooms" 
                     className={styles.select}
-                    onChange={(e) => handlers.handleChangeRoom(e)}
+                    onChange={(e) => handleChangeRoom(e)}
                 >
                     <option value="general">General Chat</option>
                     <option value="javascript">JavaScript</option>
@@ -64,7 +38,8 @@ const SignIn = () => {
 
             <button
                 className={styles.button}
-                onClick={() => console.log({ username, room })}
+                onClick={() => handleInitUser()}
+                disabled={!username.length}
             >
                 Join
             </button>

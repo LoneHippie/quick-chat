@@ -9,15 +9,39 @@ import './styles/base.scss';
 
 const App = () => {
 
-    const [ user, setUser ] = useState(null);
+    const [ user, setUser ] = useState(false);
+
+    const [ username, setUsername ] = useState('');
+    const [ room, setRoom ] = useState('general');
+
+    const signInHandlers = {
+        handleChangeName: (e) => {
+            setUsername(e.target.value);
+        },
+        handleChangeRoom: (e) => {
+            setRoom(e.target.value);
+            console.log(room)
+        },
+        handleInitUser: () => {
+            setUser(true)
+        }
+    }
 
     return (
         <SocketProvider>
             {
                 user ? (
-                    <ChatRoom />
+                    <ChatRoom 
+                        username={username}
+                        room={room}
+                    />
                 ) : (
-                    <SignIn />
+                    <SignIn 
+                        username={username}
+                        handleChangeName={signInHandlers.handleChangeName}
+                        handleChangeRoom={signInHandlers.handleChangeRoom}
+                        handleInitUser={signInHandlers.handleInitUser}
+                    />
                 )
             }
         </SocketProvider>
