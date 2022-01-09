@@ -1,0 +1,17 @@
+@import "../../styles/variables";
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 8rem;
+    background-color: $color-primary-light;
+
+    & > h1 {
+        font-family: $font-1;
+        font-size: 4.2rem;
+        font-weight: 600;
+        color: $color-white;
+    }
+}

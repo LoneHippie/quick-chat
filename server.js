@@ -5,7 +5,9 @@ const cors = require('cors');
 const socketio = require('socket.io');
 
 const app = express();
+
 app.use(cors());
+
 const server = http.createServer(app);
 const io = socketio(server, {
     cors: {
@@ -26,6 +28,7 @@ app.use((req, res, next) => {
 io.on('connection', (socket) => {
     //broadcast new users
     socket.broadcast.emit('message', 'A new user has connected');
+    
     //leave message
     socket.on('disconnect', () => {
         io.emit('message', 'A user has left the chat')
