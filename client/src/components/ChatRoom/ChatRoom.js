@@ -8,7 +8,7 @@ import RoomChatbar from '../RoomChatbar/RoomChatbar';
 
 import styles from './ChatRoom.module.scss';
 
-const ChatRoom = ({ username, room }) => {
+const ChatRoom = ({ username, room, handleChangeRoom }) => {
 
     const socket = useContext(SocketContext);
 
@@ -30,16 +30,20 @@ const ChatRoom = ({ username, room }) => {
     }, [])
 
     return (
-        // <div className={styles.body}>
-        //     <h1 className={styles.text}CHATROOM></h1>
-        // </div>
         <main className={styles.body}>
             
-            <RoomList />
+            <RoomList 
+                currentRoom={room}
+                handleChangeRoom={handleChangeRoom}
+            />
 
             <section className={styles.chatroom}>
-                <RoomHeader />
-                <RoomChatDisplay />
+                <RoomHeader 
+                    room={room}
+                />
+                <RoomChatDisplay 
+
+                />
                 <RoomChatbar />
             </section>
 

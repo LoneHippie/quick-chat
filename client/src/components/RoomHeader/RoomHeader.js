@@ -2,11 +2,11 @@ import React from 'react';
 
 import styles from './RoomHeader.module.scss';
 
-const RoomHeader = () => {
+const RoomHeader = ({ room }) => {
 
     return (
         <header className={styles.header}>
-            <h1>Room Name Here</h1>
+            <h1>{ room }</h1>
         </header>
     )
 };

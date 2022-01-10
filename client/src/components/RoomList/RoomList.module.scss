@@ -5,4 +5,24 @@
     height: 100%;
 
     background: $color-primary;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.room {
+    width: 100%;
+    height: 10rem;
+    background: rgba($color-white, 0.8);
+    color: $color-primary-light;
+    font-family: $font-1;
+    font-size: 3rem;
+    text-align: center;
+    padding: 5%;
+    border: none;
+    text-transform: capitalize;
+
+    &:disabled {
+        background: rgba($color-black, 0.6);
+    }
 }
