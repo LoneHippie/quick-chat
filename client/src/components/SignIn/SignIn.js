@@ -21,7 +21,7 @@ const SignIn = ({ username, handleChangeName, handleChangeRoom, handleInitUser }
                 />
             </div>
 
-            <div className={styles.form_group}>
+            {/* <div className={styles.form_group}>
                 <label htmlFor='room'>Room</label>
                 <select 
                     name="rooms" 
@@ -34,7 +34,7 @@ const SignIn = ({ username, handleChangeName, handleChangeRoom, handleInitUser }
                     <option value="backend">Back End</option>
                     <option value="hobbies">Hobbies</option>
                 </select>
-            </div>
+            </div> */}
 
             <button
                 className={styles.button}

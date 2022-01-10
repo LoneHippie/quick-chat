@@ -12,15 +12,15 @@ const App = () => {
     const [ user, setUser ] = useState(false);
 
     const [ username, setUsername ] = useState('');
-    const [ room, setRoom ] = useState('general');
+    // const [ room, setRoom ] = useState('general');
 
     const appHandlers = {
         handleChangeName: (e) => {
             setUsername(e.target.value);
         },
-        handleChangeRoom: (e) => {
-            setRoom(e.target.value);
-        },
+        // handleChangeRoom: (e) => {
+        //     setRoom(e.target.value);
+        // },
         handleInitUser: () => {
             setUser(true)
         }
@@ -32,14 +32,14 @@ const App = () => {
                 user ? (
                     <ChatRoom 
                         username={username}
-                        room={room}
-                        handleChangeRoom={appHandlers.handleChangeRoom}
+                        // room={room}
+                        // handleChangeRoom={appHandlers.handleChangeRoom}
                     />
                 ) : (
                     <SignIn 
                         username={username}
                         handleChangeName={appHandlers.handleChangeName}
-                        handleChangeRoom={appHandlers.handleChangeRoom}
+                        // handleChangeRoom={appHandlers.handleChangeRoom}
                         handleInitUser={appHandlers.handleInitUser}
                     />
                 )
