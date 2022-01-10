@@ -11,16 +11,16 @@ const RoomChatDisplay = ({ username }) => {
 
         socket.emit('join', username);
 
-        socket.on('servermessage', data => {
-            console.log(data);
+        socket.on('servermessage', message => {
+            console.log(message);
         });
 
-        socket.on('chatmessage', (data, username) => {
-            console.log(`Chat message: ${data} - ${username}`);
+        socket.on('chatmessage', ({message, username}) => {
+            console.log(`Chat message: ${message} - ${username}`);
         });
 
         return () => {
-            socket.close(username)
+            socket.close()
         };
     }, []);
 

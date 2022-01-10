@@ -10,7 +10,7 @@ const RoomChatbar = ({ username }) => {
     const [ message, setMessage ] = useState('');
 
     const emitNewMessage = (data) => {
-        socket.emit('sendmessage', data, username);
+        socket.emit('sendmessage', { message: data, username: username });
         setMessage('');
     };
 
