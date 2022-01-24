@@ -7,7 +7,7 @@ import RoomChatbar from '../RoomChatbar/RoomChatbar';
 
 import styles from './ChatRoom.module.scss';
 
-const ChatRoom = ({ username }) => {
+const ChatRoom = ({ username, userID }) => {
 
     return (
         <main className={styles.body}>
@@ -15,9 +15,11 @@ const ChatRoom = ({ username }) => {
                 <RoomHeader />
                 <RoomChatDisplay 
                     username={username}
+                    userID={userID}
                 />
                 <RoomChatbar 
                     username={username}
+                    userID={userID}
                 />
             </section>
 

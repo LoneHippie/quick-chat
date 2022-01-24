@@ -12,6 +12,7 @@ const App = () => {
     const [ user, setUser ] = useState(false);
 
     const [ username, setUsername ] = useState('');
+    const [ userID, setUserID ] = useState(null);
     // const [ room, setRoom ] = useState('general');
 
     const appHandlers = {
@@ -22,7 +23,8 @@ const App = () => {
         //     setRoom(e.target.value);
         // },
         handleInitUser: () => {
-            setUser(true)
+            setUser(true);
+            setUserID(`${Date.now()}${Math.random() * 100}`);
         }
     }
 
@@ -32,6 +34,7 @@ const App = () => {
                 user ? (
                     <ChatRoom 
                         username={username}
+                        userID={userID}
                         // room={room}
                         // handleChangeRoom={appHandlers.handleChangeRoom}
                     />
