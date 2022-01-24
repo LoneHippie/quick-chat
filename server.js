@@ -26,12 +26,18 @@ app.use((req, res, next) => {
 
 //socket
 io.on('connection', (socket) => {
-    //broadcast new users
-    socket.broadcast.emit('message', 'A new user has connected');
-    
+    //listen for new user connections
+    socket.on('join', (username) => {
+        socket.broadcast.emit('servermessage', `${username} has entered`);
+    });
+    //listen for messages sent to server and emit message
+    socket.on('sendmessage', ({message, username, date, id}) => {
+        io.emit('chatmessage', {message, username, date, id});
+    })
+
     //leave message
     socket.on('disconnect', () => {
-        io.emit('message', 'A user has left the chat')
+        socket.broadcast.emit('servermessage', `user has left`)
     })
 })
 
