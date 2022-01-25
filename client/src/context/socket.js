@@ -1,7 +1,7 @@
 import React, { createContext } from 'react';
 import { io } from 'socket.io-client';
 
-const socket = io(`http://${window.location.hostname}:3000`),
+const socket = io(`https://socket-quick-chat-app.herokuapp.com/`),
 SocketContext = createContext(socket);
 
 socket.on('connect', () => console.log('connected to socket on client'));
